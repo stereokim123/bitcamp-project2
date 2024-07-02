@@ -2,8 +2,8 @@ package bitcamp.project2.vo;
 
 public class Repeat {
 
-    boolean repeat;
-    Term repeatTerm;
+    public boolean repeat;
+    public Term repeatTerm;
 
     public Repeat(boolean repeat, Term repeatTerm) {
         this.repeat = repeat;

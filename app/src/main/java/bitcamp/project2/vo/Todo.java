@@ -14,6 +14,7 @@ public class Todo {
     static LinkedList<String> tagList = new LinkedList<>();
 
     int no;
+    boolean complete;
     String title;
     Calendar deadline;
     String storage;
@@ -132,5 +133,25 @@ public class Todo {
 
     public static LinkedList<String> getStorageList() {
         return storageList;
+    }
+
+    public static void setStorageList(LinkedList<String> storageList) {
+        Todo.storageList = storageList;
+    }
+
+    public static void setTagList(LinkedList<String> tagList) {
+        Todo.tagList = tagList;
+    }
+
+    public boolean isComplete() {
+        return complete;
+    }
+
+    public String getComplete() {
+        return complete ? " 완료 " : "미완료";
+    }
+
+    public void setComplete(boolean complete) {
+        this.complete = complete;
     }
 }

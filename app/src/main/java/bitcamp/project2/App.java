@@ -5,6 +5,7 @@ package bitcamp.project2;
 
 import bitcamp.project2.command.CreateCommand;
 import bitcamp.project2.command.ManagementCommand;
+import bitcamp.project2.command.ReadCommand;
 import bitcamp.project2.command.TodoCommand;
 import bitcamp.project2.util.Print;
 import bitcamp.project2.util.PromptTodo;
@@ -18,7 +19,7 @@ public class App {
         TodoCommand.init();
         while (true) {
 
-            Print.printTodoList(TodoCommand.todos);
+            Print.printHaveTodoList(TodoCommand.todos);
             Print.printTitle(mainTitle);
             Print.printMenus(mainMenus);
 
@@ -36,7 +37,7 @@ public class App {
                     ManagementCommand.management();
                     break;
                 case 4:
-                    //ReadCommand.readTodo();
+                    ReadCommand.readTodo();
                     break;
                 default:
                     System.out.println("[System] 올바른 메뉴를 선택해 주세요.");

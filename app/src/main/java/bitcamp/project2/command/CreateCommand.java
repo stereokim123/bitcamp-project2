@@ -80,7 +80,6 @@ public class CreateCommand {
             }
         }
 
-        // String 으로 보관함 받기, 보관함 = default("기본")
         Todo todo = new Todo(todoTitle, deadline, storage, priority, repeatSet, tags);
         TodoCommand.todos.add(todo);
     }

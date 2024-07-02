@@ -79,20 +79,24 @@ public class Print {
         printTitleBig();
 
         System.out.println(
-            "No |    날짜    | 우선순위 |      제목      |  보관함 |   반복여부   | 태그 ");
+            "No | 완료여부 |    날짜    | 우선순위 |      제목      |  보관함 |   반복여부   | 태그 ");
         System.out.println(
             "------------------------------------------------------------------------------------------------------------------");
 
         for (int i = 0; i < todoList.size(); i++) {
             Todo todo = todoList.get(i);
 
-            System.out.printf("%02d | %s |    %s   | %s | %s | %s | %s", todo.getNo(),
-                todo.getDeadlineDate(),
+            System.out.printf("%02d |  %s  | %s |    %s   | %s | %s | %s | %s", todo.getNo(),
+                todo.getComplete(), todo.getDeadlineDate(),
                 todo.getPriority().getName(), todo.getTitle(), todo.getStorage(),
                 todo.getRepeat().stringRepeat(),
                 todo.getTagList().toString());
 
         }
         System.out.println("");
+    }
+
+    public static void printHaveTodoList(TodoList todoList) {
+
     }
 }
