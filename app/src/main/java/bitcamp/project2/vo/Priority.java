@@ -1,18 +1,18 @@
 package bitcamp.project2.vo;
 
 public enum Priority {
-    HIGH(1),
-    MIDDLE(2),
-    LOW(3);
+    HIGH("상"),
+    MIDDLE("중"),
+    LOW("하");
 
-    private final int priority;
+    private final String priority;
 
-    Priority(int priority) {
+    Priority(String priority) {
         this.priority = priority;
     }
 
     // int priority를 반환하는 메서드
-    public int getName() {
+    public String getName() {
         return priority;
     }
 

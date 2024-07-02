@@ -1,21 +1,38 @@
 package bitcamp.project2.vo;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Objects;
 
 public class Todo {
 
     static int seqNo;
+    static LinkedList<String> storageList = new LinkedList<>();
+    static LinkedList<String> tagList = new LinkedList<>();
 
     int no;
     String title;
     Calendar deadline;
     String storage;
     Priority priority;
-    boolean repeat;
-    Date repeatTerm;
-    String[] tags;
+    Repeat repeat;
+    LinkedList<String> tags;
+
+    public Todo(String title, Calendar deadline, String storage, Priority priority, Repeat repeat,
+        LinkedList<String> tags) {
+        ++seqNo;
+
+        this.no = seqNo;
+        this.title = title;
+        this.deadline = deadline;
+        this.storage = storage;
+        this.priority = priority;
+        this.repeat = repeat;
+        this.tags = tags;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -54,6 +71,16 @@ public class Todo {
         return deadline;
     }
 
+    public String getDeadlineDate() {
+        Date date = deadline.getTime();
+
+        // 원하는 형식으로 포맷팅
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        // 결과 출력
+        return dateFormat.format(date);
+    }
+
     public void setDeadline(Calendar deadline) {
         this.deadline = deadline;
     }
@@ -74,27 +101,36 @@ public class Todo {
         this.priority = priority;
     }
 
-    public boolean isRepeat() {
+    public Repeat getRepeat() {
         return repeat;
     }
 
-    public void setRepeat(boolean repeat) {
+    public void setRepeat(Repeat repeat) {
         this.repeat = repeat;
     }
 
-    public Date getRepeatTerm() {
-        return repeatTerm;
+    public StringBuilder getTagList() {
+        StringBuilder tag = new StringBuilder();
+        for (int i = 0; i < tags.size(); i++) {
+            tag.append(tags.get(i));
+        }
+
+        return tag;
     }
 
-    public void setRepeatTerm(Date repeatTerm) {
-        this.repeatTerm = repeatTerm;
-    }
-
-    public String[] getTags() {
+    public LinkedList<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(LinkedList<String> tags) {
         this.tags = tags;
+    }
+
+    public static void addStorageList(String... storage) {
+        storageList.addAll(Arrays.asList(storage));
+    }
+
+    public static LinkedList<String> getStorageList() {
+        return storageList;
     }
 }

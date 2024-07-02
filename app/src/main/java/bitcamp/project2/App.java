@@ -3,6 +3,7 @@
  */
 package bitcamp.project2;
 
+import bitcamp.project2.command.CreateCommand;
 import bitcamp.project2.command.ManagementCommand;
 import bitcamp.project2.command.TodoCommand;
 import bitcamp.project2.util.Print;
@@ -14,8 +15,10 @@ public class App {
     static String[] mainMenus = {"Todo List", "Todo 생성", "Todo 관리", "Todo 조회"};
 
     public static void main(String[] args) {
+        TodoCommand.init();
         while (true) {
-            Print.printTodo();
+
+            Print.printTodoList(TodoCommand.todos);
             Print.printTitle(mainTitle);
             Print.printMenus(mainMenus);
 
@@ -24,10 +27,10 @@ public class App {
             switch (menuNo) {
                 case 1:
                     // 미완성 메서드
-                    Print.printTodo();
+                    Print.printTodoList(TodoCommand.todos);
                     break;
                 case 2:
-                    TodoCommand.createTodo();
+                    CreateCommand.createTodo();
                     break;
                 case 3:
                     ManagementCommand.management();
